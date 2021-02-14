@@ -1,2 +1,2 @@
 # launch-settings
-launchSettings configuration in sync with Azure DevOps and local dev box
+Various launch settings files for repos I work on.
