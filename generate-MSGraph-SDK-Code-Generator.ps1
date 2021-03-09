@@ -32,8 +32,20 @@ foreach ($platform in $platforms)
             $metadataPath = $cleanMetadataPaths[$endpointVersion]
             $metadataFullPath = "$metadataDirectory/$metadataPath"
             $outputDirectory = "$language`_$endpointVersion"
-            
+
             $commandLineArgs = "-v Info -m $metadataFullPath -g Files -l $language -o $outputDirectory -e $endpointVersion"
+
+            if ($endpointVersion -eq "beta")
+            {
+                if ($language -eq "PHP")
+                {
+                    $commandLineArgs += " -p php.namespacePrefix:Beta"
+                }
+                elseif ($language -eq "TypeScript")
+                {
+                    $commandLineArgs += " -p typescript.namespacePostfix:beta"
+                }
+            }
             
             if ($platform -eq "windows")
             {
